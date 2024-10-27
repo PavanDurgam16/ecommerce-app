@@ -1,0 +1,17 @@
+# server configurations
+APP_NAME: Ecommerce Applicatiom
+
+SERVER_PORT: 8086
+ACTIVE_PROFILE: prod
+
+#database configurations
+DB_NAME: mysql
+MYSQL_USERNAME: <prod db username>
+MYSQL_PASSWORD: <prd db password>
+MYSQL_HOST: localhost
+MYSQL_PORT: 3306
+MYSQL_SCHEMA: ecommerce_prod_db
+
+#jwt configurations
+JWT_SECRET_KEY: uG4z5TIDmxGGBLZcND5PkOtn8x90HSQB42xKj5GvJH4YkYIFNwuTCw7Uc+dnU4wf3KBA3WZzRjTZSSRvpCuJ9Q==
+JWT_EXPIRATION_TIME: 86400000  #24 hrs

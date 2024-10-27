@@ -1,0 +1,20 @@
+# server configurations
+APP_NAME: Ecommerce Applicatiom
+
+SERVER_PORT: 8089
+ACTIVE_PROFILE: dev
+
+#database configurations
+DB_NAME: mysql
+MYSQL_USERNAME:
+MYSQL_PASSWORD:
+MYSQL_HOST: localhost
+MYSQL_PORT: 3306
+MYSQL_SCHEMA: ecommerce_db
+
+AWS_ACCESS_KEY:
+AWS_SECRET_KEY:
+AWS_S3_BUCKET_NAME:
+#jwt configurations
+JWT_SECRET_KEY:
+JWT_EXPIRATION_TIME: 86400000  #24 hrs
