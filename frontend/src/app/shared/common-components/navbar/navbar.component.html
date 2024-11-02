@@ -1,0 +1,59 @@
+<mat-toolbar
+  class="navbar"
+  [ngStyle]="{
+    background: 'linear-gradient(to right, #4a90e2, #50e3c2)',
+    color: '#fff'
+  }"
+>
+  <div class="toolbar-container">
+    <div class="logo">
+      <a mat-button routerLink="/" class="logo-text">E Commmerce App</a>
+    </div>
+
+    <!-- Search bar in the center -->
+    <div class="search-container">
+      <input matInput placeholder="Search..." [(ngModel)]="searchQuery" />
+      <button matSuffix (click)="searchProducts()" aria-label="Search">
+        <span><i class="fas fa-search"></i></span>
+      </button>
+    </div>
+
+    <div class="links-container">
+      <!-- Links for authenticated customers -->
+      <ng-container
+        *ngIf="authService.isAuthenticated() && authService.isCustomer()"
+      >
+        <a mat-button routerLink="/">Home</a>
+        <a mat-button routerLink="/products">Products</a>
+        <a mat-button routerLink="/cart">Cart</a>
+        <a mat-button routerLink="/orders">Orders</a>
+      </ng-container>
+
+      <!-- Links for unauthenticated users -->
+      <ng-container *ngIf="!authService.isAuthenticated()">
+        <a mat-button routerLink="/">Home</a>
+        <a mat-button routerLink="/products">Products</a>
+        <a mat-button routerLink="/auth/login">Login</a>
+        <a mat-button routerLink="/auth/register">Register</a>
+      </ng-container>
+
+      <!-- Admin Links -->
+      <ng-container
+        *ngIf="authService.isAuthenticated() && authService.isAdmin()"
+      >
+        <a mat-button routerLink="/admin/products">Products</a>
+        <a mat-button routerLink="/orders">Orders</a>
+        <button mat-button routerLink="/admin/products/add">Add Product</button>
+      </ng-container>
+
+      <!-- Logout button -->
+      <button
+        mat-button
+        *ngIf="authService.isAuthenticated()"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

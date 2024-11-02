@@ -1,0 +1,97 @@
+.product-card {
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-details {
+  display: flex;
+  padding: 20px;
+}
+
+.left-side {
+  flex: 1;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.right-side {
+  flex: 2;
+}
+
+.card-text {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.review-container h6 {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.dummy-review p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.review-bar {
+  margin-top: 15px;
+}
+
+textarea.form-control {
+  border-radius: 5px;
+  resize: none;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+}
+
+.btn-outline-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}

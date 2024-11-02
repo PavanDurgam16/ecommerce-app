@@ -1,0 +1,52 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.social-icons {
+  margin: 1rem 0;
+}
+
+.social-icon {
+  margin: 0 10px;
+  color: #495057;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #007bff;
+}
+
+h5 {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.address {
+  margin-bottom: 1rem;
+}
+
+ul.list-unstyled li {
+  margin-bottom: 0.5rem;
+}
+
+ul.list-unstyled li a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+ul.list-unstyled li a:hover {
+  color: #0056b3;
+}
+
+.form-control {
+  width: auto;
+  max-width: 300px;
+}
+
+.btn {
+  margin-left: 10px;
+}

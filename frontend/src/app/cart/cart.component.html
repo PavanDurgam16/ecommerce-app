@@ -1,0 +1,63 @@
+<mat-card *ngIf="cart?.cartItems?.length === 0" class="empty-cart-card">
+  <mat-card-content>
+    <h2>Your cart is empty!</h2>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="cart && cart.cartItems.length > 0" class="cart-card">
+  <mat-card-header>
+    <mat-card-title>Your Cart</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <button
+      mat-button
+      color="warn"
+      class="m-4 p-2"
+      style="color: azure; background-color: rgb(3, 57, 57)"
+      (click)="clearTotoalCart()"
+    >
+      Clear Cart
+    </button>
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart.cartItems">
+          <td>
+            <img
+              [src]="item.product.imageUrl"
+              alt="{{ item.product.name }}"
+              class="cart-item-image passport-size"
+            />
+          </td>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.product.price | currency }}</td>
+          <td>
+            <button
+              mat-button
+              style="color: azure; background-color: rgb(3, 57, 57)"
+              color="warn"
+              (click)="removeFromCart(item.product.id)"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-card-footer class="d-flex justify-content-between center m-2 p-2">
+      <h3 class="total-price">Total Price: {{ totalPrice | currency }}</h3>
+      <button mat-raised-button color="primary" (click)="placeOrder()">
+        Place Order
+      </button>
+    </mat-card-footer>
+  </mat-card-content>
+</mat-card>

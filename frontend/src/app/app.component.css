@@ -1,0 +1,16 @@
+.router-outlet-container {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.router-outlet-container > * {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  padding: 10px;
+}

@@ -1,0 +1,19 @@
+mat-card {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+input[type="file"] {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}

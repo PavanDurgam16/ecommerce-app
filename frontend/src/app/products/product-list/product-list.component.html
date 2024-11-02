@@ -1,0 +1,132 @@
+<div class="container product-list mt-2">
+  <h2 class="mb-4 text-center featured-products-heading">Featured Products</h2>
+
+  <!-- Carousel: first 5 products -->
+  <div
+    id="featuredCarousel"
+    class="carousel slide mb-5"
+    data-ride="carousel"
+    data-interval="3000"
+    style="max-width: 100%; width: 100%"
+  >
+    <div class="carousel-inner">
+      <ng-container *ngIf="firstFiveProducts.length > 0; else skeletonCarousel">
+        <div
+          class="carousel-item"
+          *ngFor="let product of firstFiveProducts; let i = index"
+          [ngClass]="{ active: i === 0 }"
+        >
+          <img
+            [src]="product.imageUrl"
+            class="d-block w-100"
+            [alt]="product.name"
+            style="width: 100%; height: 400px; object-fit: cover"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ product.name }}</h5>
+            <p>${{ product.price.toFixed(2) }}</p>
+            <button
+              class="btn btn-sm btn-primary"
+              (click)="goToProductDetail(product.id)"
+            >
+              View Details
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <ng-template #skeletonCarousel>
+      <div class="carousel-item active">
+        <div
+          class="skeleton skeleton-carousel"
+          style="height: 400px; background-color: #e0e0e0"
+        ></div>
+      </div>
+    </ng-template>
+
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-target="#featuredCarousel"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-target="#featuredCarousel"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Spacing and Heading for Remaining Products -->
+  <h2 class="mb-4 text-center remaining-products-heading">All Products</h2>
+
+  <div class="row">
+    <ng-container *ngIf="remainingProducts.length > 0; else skeletonProducts">
+      <div class="col-md-4 mb-4" *ngFor="let product of remainingProducts">
+        <div class="card h-100 text-center">
+          <img
+            [src]="product.imageUrl"
+            [alt]="product.name"
+            class="card-img-top"
+            style="height: 200px; object-fit: cover; width: 100%"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">${{ product.price.toFixed(2) }}</p>
+            <div class="card-text">
+              <p>{{ product.description | truncate : 100 }}</p>
+              <span
+                *ngIf="product.description.length > 100"
+                class="text-primary"
+                (click)="goToProductDetail(product.id)"
+                style="cursor: pointer"
+              >
+                See more
+              </span>
+            </div>
+          </div>
+
+          <div class="card-footer d-flex justify-content-between">
+            <button class="btn btn-primary" (click)="addToCart(product)">
+              Add to Cart
+            </button>
+            <button
+              class="btn btn-link"
+              (click)="goToProductDetail(product.id)"
+            >
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Skeleton for Product Cards -->
+  <ng-template #skeletonProducts>
+    <div class="col-md-4 mb-4" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+      <div class="card h-100 text-center">
+        <div
+          class="skeleton skeleton-card-img"
+          style="height: 200px; background-color: #e0e0e0"
+        ></div>
+        <div class="card-body">
+          <div class="skeleton skeleton-text mb-2"></div>
+          <div class="skeleton skeleton-text"></div>
+        </div>
+        <div class="card-footer">
+          <div class="skeleton skeleton-button"></div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

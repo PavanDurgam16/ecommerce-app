@@ -1,0 +1,73 @@
+<div class="login-container text-center">
+  <mat-card>
+    <mat-card-header>
+      <div class="text-center my-2">
+        <mat-card-title>
+          <div style="font-size: 2rem">Login</div>
+        </mat-card-title>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Username or Email</mat-label>
+            <input
+              matInput
+              formControlName="usernameOrEmail"
+              type="text"
+              placeholder="Enter your username or password"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('usernameOrEmail')?.invalid &&
+                loginForm.get('usernameOrEmail')?.touched
+              "
+            >
+              {{ loginForm.get('usernameOrEmail')?.errors?.['required'] ? 'username Or Email is required' : '' }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              placeholder="Enter your password"
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.touched
+              "
+            >
+              {{ loginForm.get('password')?.errors?.['required'] ? 'Password is required' : '' }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+          [ngClass]="{
+            'blue-button': !loginForm.invalid,
+            'disabled-button': loginForm.invalid
+          }"
+        >
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-footer>
+      <p class="text-center py-1">
+        Don't have an account?
+        <a style="color: blue" (click)="goToRegistration()">Register here</a>
+      </p>
+    </mat-card-footer>
+  </mat-card>
+</div>

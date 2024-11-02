@@ -1,0 +1,65 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div *ngIf="product" class="card product-card">
+    <div class="d-flex product-details">
+      <!-- Left side: Image and name -->
+      <div class="left-side">
+        <img
+          [src]="product.imageUrl"
+          [alt]="product.name"
+          class="product-image"
+        />
+        <h5 class="product-name">{{ product.name }}</h5>
+      </div>
+
+      <!-- Right side: Other details -->
+      <div class="right-side">
+        <p class="card-text">
+          <strong>Price:</strong> ${{ product.price.toFixed(2) }}
+        </p>
+        <p class="card-text">
+          <strong>Description:</strong> {{ product.description }}
+        </p>
+        <p class="card-text"><strong>Size:</strong> {{ product.itemSize }}</p>
+        <p class="card-text">
+          <strong>Stock:</strong>
+          {{ product.stock > 0 ? product.stock : "Out of Stock" }}
+        </p>
+        <p *ngIf="product.categoryName" class="card-text">
+          <strong>Category:</strong> {{ product.categoryName }}
+        </p>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-between mt-3">
+          <button
+            class="btn btn-success btn-lg"
+            (click)="addToCart(product)"
+            [disabled]="product.stock === 0"
+          >
+            Add to Cart
+          </button>
+          <button class="btn btn-outline-secondary btn-lg" (click)="goBack()">
+            Back
+          </button>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="review-container mt-4">
+          <h6>Reviews</h6>
+          <div class="dummy-review">
+            <p><strong>User 1:</strong> Great product!</p>
+            <p><strong>User 2:</strong> Worth the price!</p>
+          </div>
+          <div class="review-bar mt-3">
+            <p>Your Review:</p>
+            <textarea
+              class="form-control"
+              rows="3"
+              placeholder="Write your review..."
+            ></textarea>
+            <button class="btn btn-success mt-2">Submit Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

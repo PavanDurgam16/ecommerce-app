@@ -1,0 +1,51 @@
+<router-outlet></router-outlet>
+
+<div *ngIf="loading" class="loading-message">Loading your orders...</div>
+<div *ngIf="!loading && orders.length === 0" class="no-orders-message">
+  You have no orders.
+</div>
+<div *ngIf="!loading && orders.length > 0">
+  <mat-card *ngFor="let order of orders" class="order-card">
+    <mat-card-header>
+      <mat-card-title>Order #{{ order.id }}</mat-card-title>
+      <mat-card-subtitle>Status: {{ order.status }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Total Amount: {{ order.totalAmount | currency }}</p>
+      <div class="d-flex justify-content-between m-3 p-3">
+        <button
+          mat-button
+          style="color: aliceblue; background-color: rgb(6, 120, 120)"
+          (click)="viewOrderDetails(order.id)"
+        >
+          View Details
+        </button>
+        <button
+          mat-button
+          style="color: aliceblue; background-color: rgb(6, 120, 120)"
+          (click)="cancelOrder(order.id)"
+        >
+          Cancel Order
+        </button>
+      </div>
+
+      <div class="order-items">
+        <h3>Products in this Order:</h3>
+        <div *ngFor="let item of order.orderItems">
+          <div class="product-item">
+            <img
+              [src]="item.product.imageUrl"
+              alt="{{ item.product.name }}"
+              class="product-image"
+            />
+            <div class="product-info">
+              <p>Name: {{ item.product.name }}</p>
+              <p>Quantity: {{ item.quantity }}</p>
+              <p>Price: {{ item.price | currency }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
